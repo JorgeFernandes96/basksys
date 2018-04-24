@@ -1,0 +1,330 @@
+<html lang="pt">
+<head>
+    <title>BaskSys</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="observador.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="observador.css">
+</head>
+<body>
+
+<style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+        margin-bottom: 0;
+        border-radius: 0;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 568px}
+
+    /* Set gray background color and 100% height */
+    #bars {
+        padding-top: 20px;
+        background-color: #f1f1f1;
+        height: 100%;
+        width: 200px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+        .sidenav {
+            height: auto;
+            padding: 15px;
+        }
+        .row.content {height:auto;}
+    }
+
+    .col-centered {
+        display:inline-block;
+        float:none;
+    }
+
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    img.selected{
+        box-shadow:0px 12px 22px 1px #333;
+    }
+
+    #novo{border:solid 1px red; margin:10px;}
+
+
+    #contenedor{
+         width: 151px;
+         height: 115px;
+     }
+
+    #campoPonto{
+    }
+
+    #mapa{
+        margin: 10px auto;
+        width: 540px;
+        height: 115px;
+    }
+    .reloj{
+        float: left;
+        font-size: 50px;
+        font-family: Courier,sans-serif;
+        color: #363431;
+    }
+    .boton{
+        outline: none;
+        border: 1px solid #363431;
+        color: white;
+        width: 128px;
+        height: 30px;
+        text-shadow: 0px -1px 1px black;
+        font-size: 20px;
+        border-radius: 5px;
+        font-family: Helvetica;
+        cursor: pointer;
+        background-image: linear-gradient(red,red);
+    }
+    .boton:active{
+        background-image: linear-gradient(red,red);
+    }
+    .boton:hover{
+        box-shadow: 0px 0px 14px #3aad02;
+    }
+
+
+
+
+
+</style>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">BaskSys</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Jogo</a></li>
+            <li><a href="#">Treino</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Novo Utilizador</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav" id="bars">
+            <div><img height="200" width="160" id="campo" src="images/campoVertical.jpg"></div>
+        </div>
+        <div class="col-sm-8 text-center">
+            <div class="row content">
+                <div class="container-fluid" id="equipaX">
+                    <h3>EquipaX</h3>
+                    <br>
+                    <div class="row" id="jogadores">
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador1" onclick="bigImg(this)" onmouseout="normalImg(this)">
+                        </div>
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador2" onclick="bigImg(this)" onmouseout="normalImg(this)">
+                        </div>
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador3" onclick="bigImg(this)" onmouseout="normalImg(this)">
+                        </div>
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador4" onclick="bigImg(this)" onmouseout="normalImg(this)">
+                        </div>
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador5" onclick="bigImg(this)" onmouseout="normalImg(this)">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" id="jogadoresS">
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador1" onclick="bigImg(this)" onmouseout="normalImg(this)">
+                        </div>
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador2" onclick="bigImg(this)" onmouseout="normalImg(this)">
+                        </div>
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador3" onclick="bigImg(this)" onmouseout="normalImg(this)">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid" id="equipaY">
+                    <h3>EquipaY</h3>
+                    <br>
+                    <div class="row" id="jogadores">
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador1" onclick="bigImg(this)">
+                        </div>
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador2" onclick="bigImg(this)">
+                        </div>
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="  width:100%" alt="Jogador3" onclick="bigImg(this)">
+                        </div>
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador4" onclick="bigImg(this)">
+                        </div>
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador5" onclick="bigImg(this)">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" id="jogadoresS">
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador1" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+                        </div>
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador2" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+                        </div>
+                        <div class="col-md-2 col-centered" id="novo">
+                            <img src="https://image.freepik.com/icones-gratis/jogador-de-basquete-com-a-bola_318-53677.jpg" class="img-responsive" style="width:100%" alt="Jogador3" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-md-2 sidebar-nav-fixed pull-right" id="bars">
+                <div class="reloj" id="Horas">00</div>
+                <div class="reloj" id="Minutos">:00</div><br>
+                <input type="button" class="boton" id="inicio" value="Start &#9658;" onclick="inicio();">
+                <input type="button" class="boton" id="parar" value="Stop &#8718;" onclick="parar();" disabled><br>
+                <input type="button" class="boton" id="continuar" value="Resume &#8634;" onclick="inicio();" disabled>
+                <input type="button" class="boton" id="reinicio" value="Reset &#8635;" onclick="reinicio();" disabled><br>
+            <p><b>Cesto</b></p>
+            <button type="button" class="btn btn-success">Convertido</button><br><br>
+            <button type="button" class="btn btn-danger">Falhado</button><br>
+            <hr>
+            <p><b>Falta</b></p>
+            <button type="button" class="btn btn-warning">Desqualificante</button><br><br>
+            <button type="button" class="btn btn-warning">Pessoal</button><br><br>
+            <button type="button" class="btn btn-warning">Tecnica</button><br><br>
+            <button type="button" class="btn btn-warning">Anti-desportiva</button><br><br>
+            <p><b>Submeter</b></p>
+            <button type="button" class="btn btn-info">Ok</button><br><br>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById('campo').onclick = function(e) {
+        var marker = document.getElementById('marker');
+        marker.style.position = "fixed";
+        marker.style.left = e.pageX;
+        marker.style.top = e.pageY;
+        marker.style.display = "block";
+    }
+    document.getElementById('campo').onclick = function(e) {
+        var marker = document.getElementById('marker');
+        marker.style.position = "fixed";
+        marker.style.left = e.pageX;
+        marker.style.top = e.pageY;
+        marker.style.display = "block";
+    }
+
+    function bigImg(x) {
+
+            primeiroClick();
+
+
+    }
+    var centesimas = 0;
+    var segundos = 0;
+    var minutos = 0;
+    var horas = 0;
+        function inicio () {
+            control = setInterval(cronometro,10);
+            document.getElementById("inicio").disabled = true;
+            document.getElementById("parar").disabled = false;
+            document.getElementById("continuar").disabled = true;
+            document.getElementById("reinicio").disabled = false;
+        }
+
+        function parar () {
+            clearInterval(control);
+            document.getElementById("parar").disabled = true;
+            document.getElementById("continuar").disabled = false;
+        }
+        function reinicio () {
+            clearInterval(control);
+            centesimas = 0;
+            segundos = 0;
+            minutos = 0;
+            horas = 0;
+            Centesimas.innerHTML = ":00";
+            Segundos.innerHTML = ":00";
+            Minutos.innerHTML = ":00";
+            Horas.innerHTML = "00";
+            document.getElementById("inicio").disabled = false;
+            document.getElementById("parar").disabled = true;
+            document.getElementById("continuar").disabled = true;
+            document.getElementById("reinicio").disabled = true;
+        }
+
+        function cronometro () {
+            if (centesimas < 99) {
+                centesimas++;
+                if (centesimas < 10) { centesimas = "0"+centesimas }
+                Centesimas.innerHTML = ":"+centesimas;
+            }
+            if (centesimas == 99) {
+                centesimas = -1;
+            }
+            if (centesimas == 0) {
+                segundos ++;
+                if (segundos < 10) { segundos = "0"+segundos }
+                Segundos.innerHTML = ":"+segundos;
+            }
+            if (segundos == 59) {
+                segundos = -1;
+            }
+            if ( (centesimas == 0)&&(segundos == 0) ) {
+                minutos++;
+                if (minutos < 10) { minutos = "0"+minutos }
+                Minutos.innerHTML = ":"+minutos;
+            }
+            if (minutos == 59) {
+                minutos = -1;
+            }
+            if ( (centesimas == 0)&&(segundos == 0)&&(minutos == 0) ) {
+                horas ++;
+                if (horas < 10) { horas = "0"+horas }
+                Horas.innerHTML = horas;
+            }
+        }
+        // x.style.boxShadow
+       // x.style.height = "75px";
+
+
+    function primeiroClick() {
+
+        $('img').click(function(){
+            $('.selected').removeClass('selected'); // removes the previous selected class
+            $(this).addClass('selected'); // adds the class to the clicked image
+        });
+
+
+    }
+
+
+    function point_it(event){
+        pos_x = event.offsetX?(event.offsetX):event.pageX-document.getElementById("pointer_div").offsetLeft;
+        pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("pointer_div").offsetTop;
+        document.getElementById("cross").style.left = (pos_x-1) ;
+        document.getElementById("cross").style.top = (pos_y-15) ;
+        document.getElementById("cross").style.visibility = "visible" ;
+        document.pointform.form_x.value = pos_x;
+        document.pointform.form_y.value = pos_y;
+    }
+
+</script>
+
+</body>
+</html>
